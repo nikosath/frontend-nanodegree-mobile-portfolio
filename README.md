@@ -6,5 +6,6 @@
 ## index.html
 
 * By adding the 'defer' keyword, I deferred the loading and execution
-of analytics.js, until after the initial render or other critical parts of the
+of `analytics.js`, until after the initial render or other critical parts of the
 page have finished loading.
+* By adding `media = "print"`
