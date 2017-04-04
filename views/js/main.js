@@ -424,6 +424,8 @@ var resizePizzas = function(size) {
    // Returns the size difference to change a pizza element from one size to another. Called by changePizzaSlices(size).
   function determineDx (elem, size) {
     var oldWidth = elem.offsetWidth;
+    // console.log('oldWidth ' + oldWidth);
+    // console.log('width ' +  elem.style.width);
     var windowWidth = document.querySelector("#randomPizzas").offsetWidth;
     var oldSize = oldWidth / windowWidth;
 
@@ -449,10 +451,13 @@ var resizePizzas = function(size) {
 
   // Iterates through pizza elements on the page and changes their widths
   function changePizzaSizes(size) {
-    for (var i = 0; i < document.querySelectorAll(".randomPizzaContainer").length; i++) {
-      var dx = determineDx(document.querySelectorAll(".randomPizzaContainer")[i], size);
-      var newwidth = (document.querySelectorAll(".randomPizzaContainer")[i].offsetWidth + dx) + 'px';
-      document.querySelectorAll(".randomPizzaContainer")[i].style.width = newwidth;
+    // nka Select all elements only once. Use getElementsByClassName instead querySelectorAll because it's faster
+    var pizzas = document.getElementsByClassName("randomPizzaContainer");
+    // nka Calculate newwidth only once, outside the for loop
+    var dx = determineDx(pizzas[0], size);
+    var newwidth = (pizzas[0].offsetWidth + dx) + 'px';
+    for (var i = 0; i < pizzas.length; i++) {
+      pizzas[i].style.width = newwidth;
     }
   }
 
@@ -501,9 +506,9 @@ function updatePositions() {
   frame++;
   window.performance.mark("mark_start_frame");
 
-  // nka Calculate this outside the items loop
+  // nka Moved this calculation outside the for (items) loop
   var scrollTopFactor = (document.body.scrollTop / 1250);
-  // nka Calculate the phases outside the items loop
+  // nka Calculate the 5 phases only once. Outside the for (items) loop.
   var phases = [];
   for (var i = 0; i < 5; i++) {
     phases[i] = Math.sin(scrollTopFactor + (i % 5));
