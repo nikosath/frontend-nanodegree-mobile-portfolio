@@ -501,17 +501,14 @@ function updatePositions() {
   frame++;
   window.performance.mark("mark_start_frame");
 
+  // nka Calculate this outside the items loop
   var scrollTopFactor = (document.body.scrollTop / 1250);
-  // var items = document.querySelectorAll('.mover');
+  // nka Calculate the phases outside the items loop
   var phases = [];
   for (var i = 0; i < 5; i++) {
     phases[i] = Math.sin(scrollTopFactor + (i % 5));
   }
-  // var j;
-  // for (var i = 0; i < items.length; i++) {
-  //   j = (j < 5) ? j : 0;
-  //   items[i].style.left = items[i].basicLeft + 100 * phases[j] + 'px';
-  // }
+
   for (var i = 0; i < items.length; i++) {
     // var phase = Math.sin(value1 + (i % 5));
     items[i].style.left = items[i].basicLeft + 100 * phases[i % 5] + 'px';
@@ -532,22 +529,30 @@ window.addEventListener('scroll', updatePositions);
 
 var items;
 function prepareInitialPositioning() {
-  items = document.querySelectorAll('.mover');
+  // nka getElementsByClassName is faster than querySelectorAll (https://jsperf.com/getelementsbyclassname-vs-queryselectorall/196)
+  items = document.getElementsByClassName('mover');
+  // items = document.querySelectorAll('.mover');
 
 }
 // Generates the sliding pizzas when the page loads.
 document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
   var s = 256;
-  for (var i = 0; i < 200; i++) {
-    var elem = document.createElement('img');
-    elem.className = 'mover';
-    elem.src = "images/pizza.png";
-    elem.style.height = "100px";
-    elem.style.width = "73.333px";
-    elem.basicLeft = (i % cols) * s;
-    elem.style.top = (Math.floor(i / cols) * s) + 'px';
-    document.querySelector("#movingPizzas1").appendChild(elem);
+  // nka add only visible pizzas
+  var viewHeight = window.innerHeight;
+  // console.log(viewHeight);
+  var elemMovingPizzas = document.getElementById("movingPizzas1");
+  for (var y = 0; y < viewHeight; y += s) {
+    for (var x = 0; x < cols; x++) {
+      var elem = document.createElement('img');
+      elem.className = 'mover';
+      elem.src = "images/pizza.png";
+      elem.style.height = "100px";
+      elem.style.width = "73.333px";
+      elem.basicLeft = x * s;
+      elem.style.top = y + 'px';
+      elemMovingPizzas.appendChild(elem);
+    }
   }
   prepareInitialPositioning();
   updatePositions();
