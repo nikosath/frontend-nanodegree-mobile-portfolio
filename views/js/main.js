@@ -451,9 +451,9 @@ var resizePizzas = function(size) {
 
   // Iterates through pizza elements on the page and changes their widths
   function changePizzaSizes(size) {
-    // nka Select all elements only once. Use getElementsByClassName instead querySelectorAll because it's faster
+    // Select all elements only once. Use getElementsByClassName instead querySelectorAll because it's faster
     var pizzas = document.getElementsByClassName("randomPizzaContainer");
-    // nka Calculate newwidth only once, outside the for loop
+    // Calculate newwidth only once, outside the for loop
     var dx = determineDx(pizzas[0], size);
     var newwidth = (pizzas[0].offsetWidth + dx) + 'px';
     for (var i = 0; i < pizzas.length; i++) {
@@ -506,9 +506,9 @@ function updatePositions() {
   frame++;
   window.performance.mark("mark_start_frame");
 
-  // nka Moved this calculation outside the for (items) loop
+  // Moved this calculation outside the for loop (items).
   var scrollTopFactor = (document.body.scrollTop / 1250);
-  // nka Calculate the 5 phases only once. Outside the for (items) loop.
+  // Calculate the 5 phases only once. Outside the for loop (items).
   var phases = [];
   for (var i = 0; i < 5; i++) {
     phases[i] = Math.sin(scrollTopFactor + (i % 5));
@@ -532,21 +532,17 @@ function updatePositions() {
 // runs updatePositions on scroll
 window.addEventListener('scroll', updatePositions);
 
+// the moving pizza elements
 var items;
-function prepareInitialPositioning() {
-  // nka getElementsByClassName is faster than querySelectorAll (https://jsperf.com/getelementsbyclassname-vs-queryselectorall/196)
-  items = document.getElementsByClassName('mover');
-  // items = document.querySelectorAll('.mover');
-
-}
 // Generates the sliding pizzas when the page loads.
 document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
   var s = 256;
-  // nka add only visible pizzas
+  // Get the browser window viewport height
   var viewHeight = window.innerHeight;
-  // console.log(viewHeight);
+  // Select these elements only once. Use getElementById which is faster
   var elemMovingPizzas = document.getElementById("movingPizzas1");
+  // These 2 loops, append only the elements that are visible to the user. By taking into account viewHeight.
   for (var y = 0; y < viewHeight; y += s) {
     for (var x = 0; x < cols; x++) {
       var elem = document.createElement('img');
@@ -559,6 +555,7 @@ document.addEventListener('DOMContentLoaded', function() {
       elemMovingPizzas.appendChild(elem);
     }
   }
-  prepareInitialPositioning();
+  // Select the moving pizzas only once, using the more performant getElementsByClassName
+  items = document.getElementsByClassName('mover');
   updatePositions();
 });

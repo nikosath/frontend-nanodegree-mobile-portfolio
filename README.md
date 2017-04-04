@@ -1,7 +1,8 @@
+# Front-end Nanodegree Project: Website Optimization
 ## Project Requirement \#1 (Critical Rendering Path)
 `index.html` achieves a `PageSpeed` score of at least 90 for Mobile and Desktop.
 
-## My Optimizations/Changes
+### My Optimizations/Changes
 
 #### Images
 
@@ -15,17 +16,34 @@
 * I deferred the `<link>` tag for google fonts, through the use of Javascript (`defer-css.js`).
 * Inserted my Google Analytics profile ID (has nothing to do with performance).
 
-## Results
+### Results
 Achieved 92 Mobile & 95 Desktop, PageSpeed Score ([link](https://developers.google.com/speed/pagespeed/insights/?url=http%3A%2F%2Fwww.nikosath.space%2Ffrontend-nanodegree-mobile-portfolio%2F&tab=desktop)).
 
-## Project Requirement #2 (Frame Rate)
+## Project Requirement #2.1 (Frame Rate)
 
 Optimizations made to `views/js/main.js` make `views/pizza.html` render with a consistent frame-rate at `60fps` when scrolling.
 
-## My Optimizations/Changes
+### My Optimizations/Changes
 
 #### main.js
 
+* I reduced the number of elements with class `.mover`, i.e the moving pizzas, from 200, to the exact number that the user will actually be able to see (in my case 24). This was done by taking into account the browser window viewport height.
+* Inside the body of `updatePositions()`, I moved the calculations of `document.body.scrollTop / 1250` and those of the 5 phases, outside of the `for` loop that were in.
+* I moved selectors such as `querySelectorAll`, outside of loops/functions in order to prevent the unnecessary reuse of them. Furthermore, I ended up replacing them, with the more performant variants `getElementsByClassName` and `getElementsById` [(see)](https://jsperf.com/getelementbyid-vs-queryselector/25).
 
-* global `items`
-* var value1
+### Results
+Achieved consistent frame-rate at `60fps` when scrolling `views/pizza.html`.
+
+## Project Requirement #2.2 (Computational Efficiency)
+
+Time to resize pizzas is less than `5ms` using the pizza size slider on the `views/pizza.html` page. Resize time is shown in the browser developer tool console.
+
+### My Optimizations/Changes
+
+#### main.js
+
+* I moved the calculations of `dx` and `newwidth` outside the for loop they were in.
+* I moved the selector for elements of class `randomPizzaContainer` outside the for loop, and replaced it with the more performant `getElementsByClassName`.
+
+### Results
+Achieved resize time of `1ms` or less.
