@@ -70,9 +70,9 @@ Time to resize pizzas is less than `5ms` using the pizza size slider on the
 
 #### main.js
 
-* I moved the calculations of `dx` and `newwidth` outside the for loop they were in.
+* I moved the calculations of `dx` and `newwidth` outside the `for` loop they were in.
 * I moved the selector for elements of class `randomPizzaContainer` outside the
-for loop, and replaced it with the more performant `getElementsByClassName`.
+`for` loop, and replaced it with the more performant `getElementsByClassName`.
 
 ### Results
 Achieved resize time of `1ms` or less.
