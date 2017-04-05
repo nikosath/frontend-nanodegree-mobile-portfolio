@@ -24,7 +24,7 @@ Finally, here's the [PageSpeed Score](https://developers.google.com/speed/pagesp
 
 #### index.html
 
-* Using the 'defer' keyword, I deferred the loading and execution of
+* Using the `defer` keyword, I deferred the loading and execution of
 `analytics.js`, until after the initial render or other critical parts of the
 page have finished loading.
 * Using `media = "print"`, I removed `print.css` from the CRP (Critical
