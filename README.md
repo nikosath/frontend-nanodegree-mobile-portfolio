@@ -52,7 +52,7 @@ from 200, to the exact number that the user will actually be able to see
 viewport height.
 * Inside the body of `updatePositions()`, I moved the calculations of
 `document.body.scrollTop / 1250` and those of the 5 phases, outside of the
-`for` loop that were in.
+`for` loop they were in.
 * I moved selectors such as `querySelectorAll`, outside of loops/functions in
 order to prevent the unnecessary reuse of them. Furthermore, I ended up
 replacing them, with the more performant variants `getElementsByClassName`
