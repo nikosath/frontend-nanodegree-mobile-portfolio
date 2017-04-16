@@ -6,8 +6,8 @@ optimization and performance related issues.
 ## Usage
 
 You may visit `index.html` at the
-[github project page](http://www.nikosath.space/frontend-nanodegree-mobile-portfolio/),
-or head straight to the [pizza section](http://www.nikosath.space/frontend-nanodegree-mobile-portfolio/views/pizza.html).
+[github project page](http://www.nikosath.space/udacity-frontend-nanodegree-mobile-portfolio/),
+or head straight to the [pizza section](http://www.nikosath.space/udacity-frontend-nanodegree-mobile-portfolio/views/pizza.html).
 As an alternative, you could download/clone the repo files and open
 `index.html` in your favorite browser. Then you may open Chrome dev tools and
 record a Timeline while scrolling those pizzas. It's smooth alright!
