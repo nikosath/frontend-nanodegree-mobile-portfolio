@@ -6,13 +6,13 @@ optimization and performance related issues.
 ## Usage
 
 You may visit `index.html` at the
-[github project page](http://www.nikosath.space/udacity-frontend-nanodegree-mobile-portfolio/),
-or head straight to the [pizza section](http://www.nikosath.space/udacity-frontend-nanodegree-mobile-portfolio/views/pizza.html).
+[github project page](http://www.nikosath.net/udacity-frontend-nanodegree-mobile-portfolio/),
+or head straight to the [pizza section](http://www.nikosath.net/udacity-frontend-nanodegree-mobile-portfolio/views/pizza.html).
 As an alternative, you could download/clone the repo files and open
 `index.html` in your favorite browser. Then you may open Chrome dev tools and
 record a Timeline while scrolling those pizzas. It's smooth alright!
 Also, try resizing the pizzas and notice the console log messages.
-Finally, here's the [PageSpeed Score](https://developers.google.com/speed/pagespeed/insights/?url=http%3A%2F%2Fwww.nikosath.space%2Ffrontend-nanodegree-mobile-portfolio%2F&tab=desktop).
+Finally, here's the [PageSpeed Score](https://developers.google.com/speed/pagespeed/insights/?url=http%3A%2F%2Fwww.nikosath.net%2Ffrontend-nanodegree-mobile-portfolio%2F&tab=desktop).
 ## Project Requirement \#1 (Critical Rendering Path)
 `index.html` achieves a `PageSpeed` score of at least 90 for Mobile and Desktop.
 
@@ -35,7 +35,7 @@ page have finished loading.
 * Inserted my Google Analytics profile ID (has nothing to do with performance).
 
 ### Results
-Achieved 92 Mobile & 95 Desktop, PageSpeed Score ([link](https://developers.google.com/speed/pagespeed/insights/?url=http%3A%2F%2Fwww.nikosath.space%2Ffrontend-nanodegree-mobile-portfolio%2F&tab=desktop)).
+Achieved 92 Mobile & 95 Desktop, PageSpeed Score ([link](https://developers.google.com/speed/pagespeed/insights/?url=http%3A%2F%2Fwww.nikosath.net%2Ffrontend-nanodegree-mobile-portfolio%2F&tab=desktop)).
 
 ## Project Requirement #2.1 (Frame Rate)
 
